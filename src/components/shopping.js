@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { addArticle, minusArticle, deletearticle } from "../actions";
 
-const shopping = props => {
+const Shopping = props => {
   let x = 0;
   for (let i = 0; i < props.articles.length; i++) {
     x += props.articles[i].price * props.articles[i].qt;
@@ -100,4 +100,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(shopping);
+)(Shopping);

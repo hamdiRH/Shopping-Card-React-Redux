@@ -3,7 +3,7 @@ import { filterName, filterType, filterStock } from "../actions";
 import { connect } from "react-redux";
 import { Link, Route } from "react-router-dom";
 
-const navbar = props => {
+const Navbar = props => {
   return (
     <Route>
       <nav className="border fixed split-nav">
@@ -113,4 +113,4 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(navbar);
+)(Navbar);

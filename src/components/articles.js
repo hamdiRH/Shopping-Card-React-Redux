@@ -5,27 +5,27 @@ import { buyArticle } from "../actions";
 const filterarticles = (articles, filter) => {
   const { filtername, filtertype, filterdispo } = filter;
   let arr = articles;
-  arr = arr.filter(el => el.type.includes(filtername));
+  arr = arr.filter((el) => el.type.includes(filtername));
   if (filtertype !== "Category") {
-    arr = arr.filter(el => el.type === filtertype);
+    arr = arr.filter((el) => el.type === filtertype);
   }
   if (filterdispo === "out") {
-    arr = arr.filter(el => el.qt === 0);
+    arr = arr.filter((el) => el.qt === 0);
   }
   if (filterdispo === "in") {
-    arr = arr.filter(el => el.qt > 0);
+    arr = arr.filter((el) => el.qt > 0);
   }
 
   return arr;
 };
 
-const article = ({ articles, buyArticle, filter }) => {
+const Article = ({ articles, buyArticle, filter }) => {
   return (
     <div style={{ display: "flex", flexWrap: "wrap", marginTop: "75px" }}>
       {filterarticles(articles, filter).map((el, i) => (
         <div
           style={{
-            padding: "1.5%"
+            padding: "1.5%",
           }}
           key={i}
         >
@@ -63,18 +63,15 @@ const article = ({ articles, buyArticle, filter }) => {
     </div>
   );
 };
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     articles: state.articles,
-    filter: { ...state }
+    filter: { ...state },
   };
 };
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    buyArticle: buy => dispatch(buyArticle(buy))
+    buyArticle: (buy) => dispatch(buyArticle(buy)),
   };
 };
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(article);
+export default connect(mapStateToProps, mapDispatchToProps)(Article);
